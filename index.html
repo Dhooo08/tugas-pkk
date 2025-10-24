@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+    <!-- Link ke Google Fonts untuk font elegan -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Link ke Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles untuk tema pastel yang lebih elegan */
+        body {
+            background-color: #f5f1f5;
+            font-family: 'Poppins', sans-serif;
+            color: #4a3c6e;
+            overflow: hidden; /* Mencegah scroll saat splash aktif */
+        }
+        h1, h2 {
+            font-family: 'Great Vibes', cursive;
+        }
+        .floral-bg {
+            background-image: url('[URL Gambar Bunga Placeholder]');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+        }
+        /* Styles untuk halaman splash */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 228, 230, 0.9); /* Pink pastel transparan */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Pastikan di atas konten lain */
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        button:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+        img:hover {
+            filter: brightness(1.1);
+            transition: filter 0.3s ease;
+        }
+        .elegant-section {
+            background-color: rgba(255, 228, 230, 0.8);
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .main-content {
+            display: none; /* Sembunyikan konten utama saat splash aktif */
+        }
+        .main-content.active {
+            display: block; /* Tampilkan konten utama setelah splash dihapus */
+        }
+    </style>
+    <script>
+        // Script untuk animasi scroll
+        document.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.75) {
+                    element.classList.add('visible');
+                }
+            });
+        });
+
+        // Script untuk kontrol musik
+        function toggleMusic() {
+            var audio = document.getElementById('backgroundMusic');
+            var button = document.querySelector('#musicButton');
+            if (audio.paused) {
+                audio.play();
+                button.textContent = 'Matikan Lagu';
+                button.classList.add('bg-pink-600');
+            } else {
+                audio.pause();
+                button.textContent = 'Putar Lagu';
+                button.classList.remove('bg-pink-600');
+            }
+        }
+
+        // Script untuk halaman splash
+        document.addEventListener('DOMContentLoaded', function() {
+            const splash = document.querySelector('.splash-screen');
+            const mainContent = document.querySelector('.main-content');
+            const enterButton = document.querySelector('#enterButton');
+
+            enterButton.addEventListener('click', function() {
+                splash.style.display = 'none';  // Hilangkan splash
+                mainContent.classList.add('active');  // Tampilkan konten utama
+                document.body.style.overflow = 'auto';  // Izinkan scroll
+            });
+        });
+    </script>
+</head>
+<body class="floral-bg">
+    <!-- Halaman Splash -->
+    <div class="splash-screen">
+        <h1 class="text-5xl font-bold text-pink-400 text-center">Selamat Datang!</h1>
+        <h2 class="text-4xl mt-4 text-gray-700 text-center">Luca Damean Hart & Aluna Marcellina Viera</h2>
+        <p class="text-xl mt-6 text-pink-500 text-center">Mari rayakan cinta kami bersama...</p>
+        <button id="enterButton" class="mt-8 bg-pink-500 text-white py-3 px-6 rounded-lg hover:bg-pink-600 transition duration-300">Masuk ke Undangan</button>
+    </div>
+
+    <!-- Konten Utama (Awalnya Tersembunyi) -->
+    <div class="main-content">
+        <header class="text-center py-20 bg-gradient-to-b from-pink-100 to-white shadow-lg">
+            <h1 class="text-5xl font-bold text-pink-400">Undangan Pernikahan</h1>
+            <h2 class="text-4xl mt-4 text-gray-700">Luca Damean Hart & Aluna Marcellina Viera</h2>
+            <p class="text-2xl mt-6 text-pink-500">25 - 05 - 2025</p>
+        </header>
+
+        <main class="container mx-auto px-6 py-12">
+            <!-- Bagian 1: Halaman Pembuka -->
+            <section id="pembuka" class="fade-in elegant-section text-center">
+                <h2 class="text-3xl font-bold text-purple-600 mb-6">Kami Menikah!</h2>
+                <p class="text-gray-600 leading-relaxed">Bergabunglah dalam perayaan cinta kami yang penuh kebahagiaan dan momen tak terlupakan. Cinta mempertemukan dua jiwa yang berbeda untuk berjalan seirama. Kini, kami siap melangkah bersama menuju kisah yang abadi.</p>
+            </section>
+
+            <!-- Bagian 2: Cerita Cinta -->
+            <section id="our-story" class="fade-in elegant-section">
+                <h2 class="text-3xl font-bold text-pink-500 mb-6">Our Story</h2>
+                <p class="text-gray-700 leading-loose">Kami bertemu tanpa rencana, namun cinta membawa kami pada perjalanan yang indah. Dari percakapan sederhana hingga mimpi yang sama, kini kami siap melangkah bersama menuju kisah selamanya.</p>
+            </section>
+
+            <!-- Bagian 3: Detail Acara -->
+            <section id="detail-acara" class="fade-in elegant-section">
+                <h2 class="text-3xl font-bold text-purple-600 mb-6">Detail Acara</h2>
+                <p class="text-gray-700"><strong>Tanggal:</strong> 25-05-2025</p>
+                <p class="text-gray-700"><strong>Lokasi:</strong> Ayana Hotel</p>
+                <p class="text-gray-700"><strong>Waktu:</strong> 10:00-00:00</p>
+            </section>
+
+            <!-- Bagian 4: Peta Lokasi -->
+            <section id="peta" class="fade-in elegant-section">
+                <h2 class="text-3xl font-bold text-pink-500 mb-6 text-center">Lokasi Acara</h2>
+                <div class="w-full h-80 rounded-lg overflow-hidden shadow-md mb-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=...[URL Embed Google Maps Anda]..." width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <a href="https://maps.app.goo.gl/QwcjTJUn1kmqhcKH8?g_st=aw" target="_blank" class="block text-center mt-4 bg-pink-500 text-white py-2 px-6 rounded-lg hover:bg-pink-600 transition duration-300">Lihat Peta Lengkap</a>
+            </section>
+
+            <!-- Bagian 5: RSVP Form -->
+            <section id="rsvp" class="fade-in elegant-section">
+                <h2 class="text-3xl font-bold text-purple-600 mb-6">Konfirmasi Kehadiran (RSVP)</h2>
+                <form action="[URL Form Handler, e.g., Google Forms]" method="POST" class="space-y-6">
+                    <div>
+                        <label for="nama" class="block text-gray-700 font-medium">Nama Lengkap:</label>
+                        <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" class="w-full p-3 border border-pink-300 rounded-lg">
+                    </div>
+                    <div>
+                        <label for="kehadiran" class="block text-gray-700 font-medium">Apakah Anda hadir?</label>
+                        <select id="kehadiran" name="kehadiran" class="w-full p-3 border border-pink-300 rounded-lg">
+                            <option value="ya">Ya, saya hadir</option>
+                            <option value="tidak">Maaf, saya tidak hadir</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="jumlah_tamu" class="block text-gray-700 font-medium">Jumlah Tamu:</label>
+                        <input type="number" id="jumlah_tamu" name="jumlah_tamu" placeholder="Misal: 2" class="w-full p-3 border border-pink-300 rounded-lg">
+                    </div>
+                    <button type="submit" class="bg-pink-500 text-white py-3 px-6 rounded-lg hover:bg-pink-600 transition duration-300">Kirim RSVP</button>
+                </form>
+            </section>
+
+            <!-- Bagian 6: Galeri Foto -->
+            <section id="galeri" class="fade-in elegant-section">
+                <h2 class="text-3xl font-bold text-pink-500 mb-6 text-center">Galeri Foto Kami</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <img src="download (1).jpeg" alt="Foto 1" class="rounded-xl shadow-lg object-cover h-64 w-full">
+                    <img src="download.jpeg" alt="Foto 2" class="rounded-xl shadow-lg object-cover h-64 w-full">
+                    <img src="download (2).jpeg" alt="Foto 3" class="rounded-xl shadow-lg object-cover h-64 w-full">
+                </div>
+            </section>
+
+            <!-- Bagian 7: Lagu Latar -->
+            <section id="musik" class="fade-in elegant-section text-center">
+                <h2 class="text-3xl font-bold text-purple-600 mb-6">Suasana Romantis</h2>
+                <p class="text-gray-700 mb-4">Putar lagu latar untuk menambah kehangatan perayaan.</p>
+                <audio id="backgroundMusic" loop>
+                    <source src="Juicy Luicy - Lagu Nikah (Official Lyric Video) [WNw2yH_waVc].mp3" type="audio/mpeg">
+                    Browser Anda tidak mendukung elemen audio.
+                </audio>
+                <button id="musicButton" onclick="toggleMusic()" class="bg-pink-500 text-white py-3 px-8 rounded-lg hover:bg-pink-600 transition duration-300">Putar Lagu</button>
+            </section>
+        </main>
+
+        <footer class="text-center py-6 mt-12 bg-gradient-to-t from-pink-100 to-white text-gray-600">
+            <p>&copy; 2025 Undangan Pernikahan Luca & Aluna. Dibuat dengan cinta dan kelembutan.</p>
+        </footer>
+    </div>  <!-- Akhir main-content -->
+</body>
+</html>
